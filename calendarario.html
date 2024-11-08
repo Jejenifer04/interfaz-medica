@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" href="icono.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Citas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('fondo.png');
+            background-position:cover;
+            background-size:cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            background-color: #0099ff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 5px;
+            box-shadow: 2px 4px 20px rgba(0, 0.1, 0, 0.1);
+        }
+
+        #month-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        #month-navigation button {
+            background-color: #0099ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #month-navigation button:hover {
+            background-color: #007acc;
+        }
+
+        table {
+            margin: 10px auto;
+            border-collapse: separate;
+            width: 100%;
+        }
+
+        td {
+            width: 45px;
+            height: 45px;
+            text-align: center;
+            border: 1.5px solid #ccc;
+            cursor: pointer;
+        }
+
+        td.disabled {
+            background-color: #beb5b5;
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        td.selected {
+            background-color: #0099ff;
+            color: rgb(255, 255, 255);
+        }
+
+        .input-group {
+            margin: 15px 0;
+        }
+
+        input, select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #0099ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #007acc;
+        }
+
+        .btn-secondary {
+            background-color: #f44336;
+        }
+
+        .btn-secondary:hover {
+            background-color: #d32f2f;
+        }
+
+        .info-text {
+            color: red;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .volver {
+            background-color: #333;
+            color: white;
+        }
+
+        .volver:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Agendar cita medica</h1>
+        <!-- Navegación por meses -->
+        <div id="month-navigation">
+            <button id="prev-month">&lt;Mes Anterior</button>
+            <span id="current-month"> Noviembre 2024 </span>
+            <button id="next-month">Mes Siguiente&gt;</button>
+        </div>
+        <!-- Formulario para asignar o modificar una cita -->
+        <table id="tabla-calendario"></table>
+
+        <div class="input-group">
+            <label for="fecha">Fecha:</label>
+            <input type="text" id="fecha" readonly>
+            
+        </div>
+
+        <div class="input-group">
+            <label for="hora">Hora:</label>
+            <input type="time" id="hora" min= "08:00:00" max= "16:00:00." required>
+        </div>
+
+        <div class="input-group">
+            <label for="especialidad">Especialidad:</label>
+            <select id="especialidad">
+                <option value="Médico general">Médico general</option>
+                <option value="Odontología">Odontología</option>
+                <option value="Psicología">Psicología</option>
+            </select>
+        </div>
+
+        <button id="asignar-cita">Asignar Cita</button>
+        <button id="eliminar-cita" class="btn-secondary">Eliminar Cita</button>
+        <button onclick="location.href='index.html';" class="volver">Volver</button>
+
+        <p class="info-text">RECUERDA: Solo se puede asignar citas de lunes a viernes, en horario de 8 am a 4 pm</p>
+    </div>
+
+    <script src="citas.js"></script>
+
+</body>
+</html>
